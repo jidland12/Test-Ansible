@@ -17,7 +17,7 @@
   tasks:
     - name: Write the new host key to known hosts
       connection: local
-      shell: "ssh-keyscan -H {{ ip_address }} >> /home/webadmin/.ssh/known_hosts"
+      shell: "ssh-keyscan -H {{ ip_address }} >> /home/semaphore/.ssh/known_hosts"
 
     - name: "Ping the VM to ensure access"
       ping:
