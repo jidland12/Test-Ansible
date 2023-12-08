@@ -1,4 +1,5 @@
-name: "Setup VM for Initial Creation"
+---
+- name: "Setup VM for Initial Creation"
   hosts: vms
   gather_facts: no
   remote_user: root
