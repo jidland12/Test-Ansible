@@ -18,6 +18,10 @@
       connection: local
       shell: "ssh-keyscan -H {{ ip_address }} >> /home/semaphore/.ssh/known_hosts"
 
+    - name: Write the host ip address to inventory file
+      connection: local
+      shell: "echo {{ ip_address }} >> /inventory/PhoneSystems.ini"
+
     - name: "Ping the VM to ensure access"
       ping:
 
