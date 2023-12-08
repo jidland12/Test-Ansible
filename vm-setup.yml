@@ -12,7 +12,6 @@
 - hosts: vm
   remote_user: root
   gather_facts: no
-  become: true
 
   tasks:
     - name: Write the new host key to known hosts
