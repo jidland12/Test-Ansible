@@ -14,7 +14,7 @@
   gather_facts: no
 
   tasks:
-    - name: Write the new host key to known hosts
+    - name: Write the host key to known hosts
       connection: local
       shell: "ssh-keyscan -H {{ ip_address }} >> /home/semaphore/.ssh/known_hosts"
 
