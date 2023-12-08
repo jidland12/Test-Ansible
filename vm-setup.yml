@@ -1,6 +1,6 @@
 ---
 - name: "Setup VM for Initial Creation"
-  hosts: vms
+  hosts: all
   gather_facts: no
   remote_user: root
 
