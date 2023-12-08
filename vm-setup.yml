@@ -1,5 +1,5 @@
 name: "Setup VM for Initial Creation"
-  hosts: hyper
+  hosts: all
   gather_facts: no
   remote_user: root
 
