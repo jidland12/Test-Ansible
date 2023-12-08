@@ -9,11 +9,6 @@
         name: '{{ ip_address }}'
         groups: vm
 
-- hosts: vm
-  remote_user: root
-  gather_facts: yes
-
-  tasks:
     - name: Write the host key to known hosts
       connection: local
       shell: "ssh-keyscan -H {{ ip_address }} >> /home/semaphore/.ssh/known_hosts"
@@ -22,6 +17,11 @@
       connection: local
       shell: "echo {{ ip_address }} >> /inventory/PhoneSystems.ini"
 
+- hosts: vm
+  remote_user: root
+  gather_facts: yes
+
+  tasks:
     - name: "Ping the VM to ensure access"
       ping:
 
