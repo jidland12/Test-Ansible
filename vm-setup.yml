@@ -1,8 +1,8 @@
 name: "Setup VM for Initial Creation"
-  hosts: all
+  hosts: vms
   gather_facts: no
   remote_user: root
 
   tasks:
-    - name: Example from an Ansible Playbook
-      ansible.builtin.ping:
+    - name: "Ping the VM to ensure access"
+      ping:
