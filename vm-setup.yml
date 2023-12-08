@@ -1,5 +1,5 @@
 ---
-- name: "Setup VM for Initial Creation"
+- name: "Setup SSH key on VM"
   hosts: all
   gather_facts: no
 
@@ -20,3 +20,29 @@
 
     - name: "Ping the VM to ensure access"
       ping:
+
+    - name: Add SSH key to authorized_keys
+      authorized_key:
+        user: "root"
+        key: https://github.com/jidland12.keys
+        state: present
+
+    - name: Disable password authentication in sshd_config
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^PasswordAuthentication'
+        line: 'PasswordAuthentication no'
+      notify: Restart SSH Service
+
+    - name: Ensure PubkeyAuthentication is set to yes
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^PubkeyAuthentication'
+        line: 'PubkeyAuthentication yes'
+      notify: Restart SSH Service
+
+  handlers:
+    - name: Restart SSH Service
+      service:
+        name: sshd
+        state: restarted
